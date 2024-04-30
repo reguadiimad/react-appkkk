@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+$font:"Poppins", sans-serif;;
+$prime-color: #F4F6F6;
+$second-color1: #FF9C91;
+$second-color2: #CD3F3E;
+$second-color3: #1C2938;
+
+@mixin form($wdt:100%,$hgt:100%){
+    width: $wdt;
+    height: $hgt;
+}
+*{
+    margin: 0;
+    padding: 0;
+    transition: all cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-sizing: border-box;
+    font-family: $font;
+}
+%center-element{
+    display: flex;align-items: center;justify-content: center;justify-items: center;
+}
+.MarkDown{
+    @include form($hgt:100vh);
+    @extend %center-element;
+    overflow: hidden;
+    background: url('./bg.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.MarkDownInterface{
+    @include form($wdt:90%,$hgt:90%);
+    border-radius: 10px;
+    display: flex;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0px 0px 46px rgba(0, 0, 0, 0.216);
+}
+.editorIntreface{
+    @include form($wdt:30%,$hgt:100%);
+    background: linear-gradient(30deg,#f5dfddab,#efececc2);
+    backdrop-filter: blur(15px);
+    color: $second-color3;
+    overflow-y: scroll;
+    padding: 20px 20px;
+    span{
+        color: $prime-color;
+        opacity: 0.9;
+        font-size: 10px;
+        margin-bottom: 100px;
+        margin-top: -30px;
+    }
+    h1{
+       color: $second-color2;
+    }
+    textarea {
+    @include form($wdt:100%,$hgt:70%);
+    border: none;
+    background: $prime-color;
+    border-radius: 10px;
+    margin-top: 10px;
+    padding: 10px;
+    color: $second-color3;
+    max-width: 100%;
+    }
+    textarea:focus{
+        outline: none;
+    }
+    p{
+        font-size: 12px;
+        color: $prime-color;
+        strong{
+            color: $second-color1;
+
+        }
+        padding: 0px 10px;
+    }
+    b{
+        color: $prime-color;
+    }
+    
+}
+.previewInterface{
+    @include form($wdt:70%,$hgt:100%);
+    background-color: $prime-color;
+    padding: 20px 20px;
+    overflow-y: scroll;
+    h1{
+        margin-bottom: 50px;
+    }
+    .preview{
+    @include form($wdt:100%,$hgt:90%);
+    overflow-y: scroll;
+    border-radius: 10px;
+    animation: typing 4s steps(40) forwards;
+    }
+}
+@keyframes typing {
+    from { width: 5%; }
+    to { width: 100%; }
+  }
+  .preview.typing-animation {
+    border: 1px solid #ccc;
+    padding: 10px;
+    animation: typing 2s steps(40) forwards;
+  }
+  
+  @keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+$breakspoint-tablet: 768px;
+$breakspoint-mobile: 576px;
+@media only screen and (max-width: $breakspoint-tablet) {
+  .MarkDownInterface {
+    flex-direction: column;
+    width: 90%;
+    height: 90%;
+  }
+
+  .editorIntreface {
+    width: 100%;
+    height: 40%;
+  }
+
+  .previewInterface {
+    width: 100%;
+    height: 60%;
+  }
+}
+
+@media only screen and (max-width: $breakspoint-mobile) {
+  .editorIntreface,
+  .previewInterface {
+    padding: 10px;
+  }
+}

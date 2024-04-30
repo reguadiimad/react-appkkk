@@ -1,0 +1,389 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&display=swap');
+$font: "Poppins", sans-serif;
+$primeColor: rgb(232,242,245); 
+$primeColor2: rgb(228,238,248); 
+$secColor1: rgb(54, 152, 251); 
+$secColor2: rgb(117,201,243); 
+$textColor: rgb(0,0,63); 
+$textColor2: rgb(118,137,152);
+@mixin form($wdt: 100%, $hgt: 100%) {
+    width: $wdt;
+    height: $hgt;
+}
+
+@mixin vendorProp($prop, $val) {
+    -moz-#{$prop}: $val;
+    -webkit-#{$prop}: $val;
+    -#{$prop}: $val;
+}
+
+@function boxShadow($isInner: false) {
+    $lightShadowColor: rgba(246, 251, 251, 0.847); // Adjust opacity if needed
+    $darkShadowColor: rgba(50, 87, 99, 0.1); // Adjust opacity if needed
+
+    @if $isInner {
+        @return inset -8px -8px 8px 0 $lightShadowColor, inset 8px 8px 8px 0 $darkShadowColor;
+    } @else {
+        @return -8px -8px 24px 0 $lightShadowColor, 8px 8px 24px 0 $darkShadowColor;
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    transition: .2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-sizing: border-box;
+    font-family: $font;
+    color: $textColor;
+    text-shadow: rgba(0, 0, 0, 0.076) 1px 0 10px;
+}
+
+%center-element {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+}
+
+.DrumInterface {
+    @include form($hgt: 100vh);
+    @extend %center-element;
+    background: linear-gradient(160deg ,$primeColor,$primeColor2);
+    flex-direction: column;
+    p{
+        color: $secColor1;
+        font-size: 14px;
+        margin-bottom: 10px;
+        opacity: 0.6;
+    }
+    .made{
+    color: $textColor2;
+    width: 80%;
+    text-align: right;
+    opacity: 0.2;
+    margin-top: 20px;
+    }
+}
+
+.DrumLayers {
+    @include form($wdt: 80%, $hgt: 75%);
+    @extend %center-element;
+    @include vendorProp(box-shadow, boxShadow(true));
+    border-radius: 20px;
+    margin-top: 10px;
+}
+.DrumBottons{
+    @include form($wdt: 51%, $hgt: 90%);
+    @include vendorProp(box-shadow,boxShadow());
+    border-radius: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    margin: 20px;
+    padding: 25px;
+    position: relative;
+    button {
+        font-family: "Dosis", sans-serif;
+        margin: 15px 20px;
+        border-radius: 30px;
+        background: $primeColor;
+        border: none;
+        @include vendorProp(box-shadow, boxShadow());
+        font-size: 36px;
+        color: $textColor2;
+        cursor: pointer;
+        font-weight: 600;
+        animation: none;
+    
+        &:hover {
+            color: $secColor1;
+            font-size: 42px;
+            text-shadow: 1px 1px 1px $primeColor;
+            text-shadow: rgba(91, 140, 239, 0.429) 1px 0 10px;
+        }
+    
+        &:focus {
+            @include vendorProp(box-shadow,boxShadow(true));
+            color: $secColor1;
+
+        }
+    }
+    div{
+        @include form($wdt: 100%, $hgt: 100%);
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: lin;
+        box-sizing: border-box; 
+        border-radius: 20px;
+        overflow: hidden;
+        @extend %center-element;
+        color: $textColor2;
+        background-image: linear-gradient(to right, #0f0c2900, rgba(232, 242, 245, 0.823), #0f0c2900);
+        backdrop-filter: blur(7px);
+        animation: power cubic-bezier(0.39, 0.575, 0.565, 1) 1 .2s;
+    }
+    
+}
+.DrumControl{
+    @include form($wdt: 40%, $hgt: 90%);
+    @include vendorProp(box-shadow,boxShadow());
+    border-radius: 20px;
+    margin: 20px;
+    overflow: hidden;
+    .Volume_Name{
+        @include form($wdt: 100%, $hgt: 72%);
+        color: $secColor1;
+        overflow: hidden;
+        .Volume{
+            @include form($wdt: 100%, $hgt: 80%);
+            @extend %center-element;
+            .volumeSlider{
+                width: 200px;
+                height: 200px;
+                border-radius: 50%;
+                @extend %center-element;
+                @include vendorProp(box-shadow,boxShadow(true));
+
+                position: relative;
+                cursor: pointer;
+                .volumeInfo{
+                    width: 75%;
+                    height: 75%;
+                    position: absolute;
+                    top: 12.5%;
+                    left: 12.5%;
+                    @include vendorProp(box-shadow,boxShadow());
+                    @extend %center-element;
+                    border-radius: 100%;
+                    cursor: default;
+                    flex-direction: column;
+                    margin-bottom: 5px;
+                    i{
+                        font-size: 25px;
+                        
+                    }
+                    h1{
+                        margin: 0px;
+                        margin-top: 10px;
+                        font-weight: 500;
+                        font-family: "Dosis", sans-serif;
+                    }
+                }
+
+            }
+
+        }
+        .Name{
+            @include form($wdt: 100%, $hgt: 20%);
+            @extend %center-element;
+
+            h3{
+                color: $textColor2;
+                width:60%;
+                padding: 25px 15px;
+                border-radius: 20px;
+                @include vendorProp(box-shadow,boxShadow(true));
+                text-align: center;
+            }
+        }
+    }
+    .Power_Bank{
+        @include form($wdt: 100%, $hgt: 28%);
+
+        display: flex;
+        &>div{
+            @include form($wdt: 50%, $hgt: 100%);
+            @extend %center-element;
+            flex-direction: column;
+            color: $textColor2;
+        }
+
+
+        .toggle{
+            margin-top: 10px;
+            width: 80px;
+            height: 40px;
+            border-radius: 30px;
+            @include vendorProp(box-shadow,boxShadow(true));
+            display: flex;
+            position: relative;
+            padding: 0px 6px;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+
+            span{
+                width: 30px;
+                height: 30px;
+                background-color: rgb(244, 246, 247);
+                border-radius: 50%;
+                @include vendorProp(box-shadow,boxShadow(true));
+                position: absolute;
+                top: 5px;
+                cursor: pointer;
+                transition: transform .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                
+            }
+        }
+        .OK{
+            background-color: $secColor1;
+            @include vendorProp(box-shadow,boxShadow(false));
+        }
+        .ok{
+            transform: translateX(40px);
+        }
+
+        
+    }
+}
+
+.chrat{
+	height: 30px;
+	align-items: center;
+	justify-content: center;
+	display: flex;
+
+	span{
+        width: 3px;
+		height: 100%;
+		border-radius: 10px;
+		background-color: rgba(0, 0, 0, 0.7);
+		margin: 0px 2px;
+		animation: volumee  cubic-bezier(0.175, 0.885, 0.32, 1.275) .2s forwards;
+	}
+	span:nth-of-type(1){
+		height: 33%;
+	}
+	span:nth-of-type(2){
+		height: 66%;
+	}
+	i{
+		font-size: 30px;
+		color: rgba(0, 0, 0, 0.7);
+		margin: 0;
+		margin-right: 3px;
+	}
+	
+}
+
+
+@keyframes volumee {
+    0%{ height: 0px;}100%{ opacity: 1;}
+}
+
+
+
+
+
+
+
+@keyframes power {
+    0%{width: 0%;height: 0%;top:50%;left:50%;font-size: 0px;opacity: 0;color: transparent; letter-spacing: 20px;}
+    70%{opacity: 20%;}
+    100%{
+        width: 100%;height: 100%;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .DrumBottons {
+    
+      button {
+       font-size: 30px;
+        margin: 4px;
+      }
+
+    
+    }
+    .Name{
+        font-size: 13px;
+        margin-top: 10px;
+        height: 10%;
+        width: 90%;
+        h3{
+            width: 98%;
+        }
+    }
+    .DrumInterface {
+        
+        p{
+           width: 75%;
+           font-size: 12px;
+           text-align: center;
+           margin-bottom: 0px;
+           margin-top: 10px;
+        }
+    }
+}
+
+
+
+
+@media screen and (max-width: 768px) {
+    p{
+        width: 90%;
+    }
+    .DrumLayers {
+        flex-direction: column;
+    }
+    .DrumBottons {
+        width: 90%;
+      padding: 15px;
+      button {
+    font-size: 30px;
+        margin: 10px 16px;
+      }
+    }
+    .DrumControl{
+        font-size: 14px;
+        width: 90%;
+        display: flex;
+        height: 100%;
+        .Volume_Name{
+            height: 100%;
+            width: 70%;
+            .Name{
+                font-size: 13px;
+                margin-top: 10px;
+                height: 10%;
+                h3{
+                    box-shadow: 0px 0px 0px transparent;
+                    width: 98%;
+                }
+            }
+
+        }
+        .Power_Bank{
+            width: 30%;
+            flex-direction:column ;
+            height: 100%;
+        
+        }
+        
+        
+    }
+  
+    
+  }
+  
+  @media screen and (max-width: 480px) {
+
+    
+    .DrumBottons {
+      grid-template-columns: repeat(1, 1fr);
+      grid-template-rows: repeat(9, 1fr);
+    }
+  
+    .DrumBottons button {
+      font-size: 20px;
+      padding: 5px;
+    }
+   
+  }
+  $secColorz: rgb(54, 152, 251); 
+
+
+
+
+  

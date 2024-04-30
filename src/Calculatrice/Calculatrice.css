@@ -1,0 +1,178 @@
+body{
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    background: url('aa.jpg'); 
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+}
+
+.Calculatrice{
+    width: 450px;
+    height: 800px;
+    background: linear-gradient(-45deg,rgba(32, 176, 238, 0.604),#ffffff26,#dad7d774);
+    border-radius: 35px;
+    backdrop-filter: blur(36px);
+    box-shadow: 10px 0px 50px 10px rgba(7, 139, 159, 0.289);
+    overflow: hidden;
+    overflow-x: auto;
+    display: block;
+    padding: 10px 20px;
+}
+
+.Calculatrice >div{
+    width: 100%;
+}
+
+.resault{
+    height: 33%;
+    display: flex;
+    display:flex;
+    flex-direction: column-reverse;
+    align-items: flex-end; 
+
+}
+.resault h1{
+    font-size: 65px;
+    margin: 0;
+    margin-bottom: 10px;
+    margin-top: -18px;
+    font-weight: 500;
+
+}
+.resault p{
+    color: #0000007b;
+    margin-right: 5px;
+}
+
+.buttons{
+    height: 67%;
+    display: flex;
+    padding: 10px 0px;
+}
+.buttons >div{
+    height: 100%;
+
+}
+.buttons1{
+    width: 75%;
+    display: block;
+
+    padding: 0;
+}
+
+.buttons1 >div{
+    width: 100%;
+    align-items: center;
+    justify-items: center;
+    display: grid;
+}
+
+.buttons11{
+  height: 80%;
+
+  grid-template-columns: 33.33% 33.33% 33.33%;
+}
+.buttons12{
+    height: 20%;
+
+    grid-template-columns: 66.66% 33.33%;
+}
+
+
+
+.buttons2{
+    width: 25%;
+
+    align-items: center;
+    justify-items: center;
+    display: grid;
+    grid-template-rows: 20% 20% 30% 30%;
+}
+
+button{
+    width: 85%;
+    height: 85%;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.253);
+    font-size: 25px;
+    color: #ffffff;
+    font-weight: 500;
+    backdrop-filter: blur(10px);
+    cursor: pointer;
+    transition: cubic-bezier(0.175, 0.885, 0.32,2) .15s;
+}
+button:hover{
+    background-color: #ffffff81;
+    color: rgba(0, 0, 0, 0.785);
+    width: 88%;
+    height: 88%;
+
+}
+
+.zero{
+    width: 92%;
+}
+
+.type1{
+    background-color: rgba(103, 179, 214, 0.278);
+    color: rgb(57, 161, 245);
+}
+.type2{
+    background-color: rgba(35, 153, 238, 0.213);
+    color: rgb(255, 255, 255);
+}
+.pm{
+    height: 90%;
+}
+
+
+button{
+    /* existing styles */
+    position: relative;
+    overflow: hidden;
+    
+}
+
+
+button:after{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 30px;
+    z-index: 1;
+    transform: scale(0);
+    transition: transform 0.01s;
+}
+
+button:before{
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.198);
+    border-radius: 50%;
+    z-index: 2;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.01s;
+}
+
+button:active:after{
+    transform: scale(1);
+}
+
+button:active:before{
+    transform: translate(-50%, -50%) scale(1);
+}

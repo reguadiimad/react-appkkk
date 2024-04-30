@@ -1,0 +1,347 @@
+@import url(https://db.onlinewebfonts.com/c/c7e7fa13f9c39d182e91d7e42b3f392c?family=URW+Casablanca+W01+Medium);
+$font:'URW Casablanca W01 Medium', sans-serif;
+$color1:#212121;
+$color2:#6D9886;
+$color3:#D9CAB3;
+$color4:#F6F6F6;
+$progress-bar-stroke-width: 1;
+$progress-bar-size: 102%;
+
+
+@mixin form($w: 100%, $h: 100%) {
+    width: $w;
+    height: $h;
+}
+@mixin vendorProp($prop, $val) {
+    -moz-#{$prop}: $val;
+    -webkit-#{$prop}: $val;
+    -#{$prop}: $val;
+}
+%center-element {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+}
+* {
+    margin: 0;
+    padding: 0;
+    transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-sizing: border-box;
+    font-family: $font;
+    text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+}
+.Interface{
+    @include form($h:100vh);
+    @extend %center-element;
+    background: $color4;
+    color: $color1;
+    overflow: hidden;
+    flex-direction: column;
+    letter-spacing: 1.7px;
+}
+.ControlCenter{
+    @include form($w:65%,$h:60%);
+    @extend %center-element;
+    flex-direction: column;
+    h1{
+
+        color: $color2;
+        font-size: 42px;
+        text-align: center;
+        margin: 50px 0px;
+    }
+    
+    .Controller{
+        @include form($w:100%,$h:40%);
+        @extend %center-element;
+        span{
+            @include form($w:50%,$h:100%);
+            @extend %center-element;
+            flex-direction: column;
+            margin: 1px;
+            h2{
+                font-size: 30px;
+                user-select: none
+            }
+            .LengthControl{
+                @extend %center-element;
+                margin: 20px 0px;
+                font-size: 40px;
+                
+                p{
+                    margin: 0px 20px;
+                    color: $color3;
+                    cursor: pointer;
+                    user-select: none;
+                    text-align: center;
+                    width: 50px;
+                    &:hover{font-size: 50px;}
+                }
+                p:nth-of-type(2){
+                    color: $color2;
+                }
+                b{
+                    font-size: 65px;
+                    font-weight: 900;
+                    margin: 10px;
+                    width: 100px;
+                    text-align: center;
+                    user-select: none
+
+                }
+            }
+
+        }
+    }
+   
+    .rest{
+        @extend %center-element;
+        color: $color2;
+        cursor: pointer;
+        user-select: none;
+        height: 20px;
+        
+        h4{
+            margin: 5px;
+            transition: .1s ease;
+        }
+        &:hover{
+            font-size: 20px;
+            letter-spacing: 2px
+        }
+    }
+
+}
+
+.TheTimer{
+    @extend %center-element;
+    @include form($w:65%,$h:40%);
+    flex-direction: column;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    background-color: $color2;
+    box-shadow: 0px 0px 40px #21212110;
+    padding: 25px 0px;
+    div{
+        @extend %center-element;
+    }
+    .breakss{
+        @include form($w:70%,$h:20%);
+        span{
+            @include form($w:45px,$h:45px);
+            border-radius: 50%;
+            margin: 0 13px;
+            background-color: $color3;
+            transition: border-radius width height margin cubic-bezier(0.25, 0.46, 0.45, 1.94) .3s;
+        }
+        .off{
+            width: 0px;height: 0px;
+            margin: 0px;
+            border-radius: 100%;
+            margin-bottom: -100px;
+            opacity: 0;
+        }
+    }
+
+    .Timer{
+        @include form($w:90%,$h:60%);
+        h1{
+            color: $color4;
+            font-weight: 900;
+            font-size: 150px;
+            letter-spacing: 15px;
+            overflow: hidden;
+            position: absolute;
+
+            text-align: center;
+
+            b{
+                width: 50%;
+            }
+            .change{
+                animation: change cubic-bezier(0.175, 0.885, 0.32, 1.1) .3s 1;
+            }
+        }
+        
+
+    }
+    .PlayPause{
+        @include form($w:70%,$h:20%);
+        color: $color3;
+        flex-direction: column;
+        
+        i{
+            font-size: 30px;
+            margin: 10px;
+            color:$color3;
+            cursor: pointer;
+        }
+        .fa-solid.fa-pause {
+            /* Styles for the pause icon */
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.2); /* Add transition for smooth animation */
+          }
+          
+          .fa-solid.fa-play {
+            /* Styles for the play icon */
+            transition: transform 0.3s ease; /* Add transition for smooth animation */
+            transform: rotate(360deg); /* Example rotation animation */
+          }
+    }
+}
+//PlayPhase------
+.PlayPhase{
+    .ControlCenter{
+        h1{color: #D9CAB3;}
+    }
+    background-color: #6D9886;
+    .TheTimer{
+        animation: playTimer .5s cubic-bezier(0.175, 0.885, 0.32, 1) forwards;
+        position: relative;
+        svg {
+            position: absolute;
+            height: $progress-bar-size;
+            transform: rotate(-90deg);
+            width: $progress-bar-size;
+          }
+          
+          .progress-bar__background {
+            fill: none;
+            stroke: #e2eff0;
+            stroke-width: $progress-bar-stroke-width;
+          }
+          
+          .progress-bar__progress {
+            fill: none;
+            stroke: #e2eff0;
+            stroke: #78bec7;
+            stroke-dasharray: 100 100;
+            stroke-dashoffset: 100;
+            stroke-linecap: round;
+            stroke-width: $progress-bar-stroke-width;
+            transition: stroke-dashoffset 1s ease-in-out;
+          }
+        .Timer{
+            h1{color: $color2;}
+            margin-top: 150px;
+            animation: playTimerh1 .8s cubic-bezier(0.175, 0.885, 0.32, 1) forwards;
+            
+        }
+       
+
+        
+        
+        .breakss{
+            margin-top: -150px;width: 100%;
+        }
+    }
+    .ControlCenter{
+        position: absolute;
+        margin-bottom: -1000px;
+    }
+    @keyframes playTimer {
+        0%{margin-bottom: -1000px;width: 100px;}
+        100%{
+            position: absolute;width: 650px;height: 650px;border-radius: 50%;
+            background-color: $color4;
+            
+        }
+    }
+    @keyframes playTimerh1 {
+        0%{margin-bottom: -2200px;letter-spacing: 19px;}
+    }
+}
+.workMode{
+    position: absolute;
+    width: 100%;
+    bottom: 3%;
+    color: $color3;
+    text-align: center;
+}
+
+
+//animations------
+
+@keyframes change {
+    0%{opacity: 0;}
+    
+}
+
+
+//Responsive-------
+
+@media screen and (max-width: 900px) {
+    .Interface{
+        div{
+            width: 80%;
+            .Timer{
+                h1 {
+                    font-size: 100px;
+                }
+            }
+        }
+        .TheTimer{
+            .breakss{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                span{
+                    width: 30px;height: 30px;
+                    margin-left: 3px;
+                    
+                }
+                .off{
+                    margin-left: 0;
+                    width: 0px;
+                }
+            }
+        }
+    }
+    
+  }
+  @media screen and (max-width: 480px) {
+    .Interface{
+        .TheTimer{
+            .breakss{
+               
+                width: 98%;
+                span{
+                    width: 20px;height: 20px;
+                    margin: 0 4px;
+                }
+                .off{
+                    margin: 0px;
+                }
+            }
+
+        }
+        div{
+            width: 80%;
+            .Timer{
+                h1 {
+                    font-size: 50px;
+                }
+            }
+            
+            .Controller{
+                b{font-size: 25px;}
+                p{
+                    font-size: 30px;
+                   
+                }
+                h2{
+                    font-size: 20px;
+                   }
+                .LengthControl{
+                   
+                    b{
+                        font-size: 35px;
+                        
+                       
+    
+                    }
+                }}
+            }
+            
+    }
+  }

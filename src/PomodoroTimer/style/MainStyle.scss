@@ -1,0 +1,338 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap');
+@import './AnimationStyle.scss';
+@import './ResponsiveStyle.scss';
+$font: "DM Sans", sans-serif;
+$digit_font: "Roboto Slab", serif;
+
+:root {
+  --color1-light: #F5F7F8;
+  --color1-dark: #495E57;
+  
+  --color2-light: #F4CE14;
+  --color2-dark: #45474B;
+  
+  --color3-light: #495E57;
+  --color3-dark: #F5F7F8;
+  
+  --color4-light: #45474B;
+  --color4-dark: #F4CE14;
+}
+
+@mixin form($w: 100%, $h: 100%) {
+    width: $w;
+    height: $h;
+}
+
+@mixin vendorProp($prop, $val) {
+    -moz-#{$prop}: $val;
+    -webkit-#{$prop}: $val;
+    -#{$prop}: $val;
+}
+
+%center-element {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    transition: all .4s cubic-bezier(0.175, 0.885, 0.32, 1);
+    box-sizing: border-box;
+    font-family: $font;
+    text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+}
+
+.Interface{
+    @include form($h:100vh);
+    background: var(--color1-light);
+    color: var(--color4-light);
+    overflow: hidden;
+    section{
+        @include form($h:55%);
+        @extend %center-element;
+        flex-direction: column;
+        
+        &:nth-of-type(2){
+            height: 45%;
+            background: var(--color2-light);
+            
+        }
+    }
+    .ControlInterface{
+        color: var(--color4-light);
+        user-select: none;
+        &>div{
+            width: 80%;height: 20%;
+            @extend %center-element;
+            
+        }
+        .TopInterface{
+            margin-top: -2%;
+            h2{
+                width: 50%;
+                font-size: 22px;
+            }
+            span{
+                width: 50%;
+                display: flex;
+                float: right;
+                flex-direction: row-reverse;
+                cursor: pointer;
+                p{ 
+                    @extend %center-element;
+                    margin: 0px 15px;
+                    text-decoration: underline 1px solid rgba(0, 0, 0, 0);
+                    &:hover{text-decoration: underline 2px solid var(--color4-light);}
+                }
+                span{
+                    width: 120px;
+                    padding: 10px 0px;
+                    border: 3px solid var(--color4-light);
+                    @extend %center-element;
+                    border-radius: 50px;
+                    color: var(--color4-light);
+                    font-weight: 600;
+                    &:hover{background-color: var(--color4-light);color: var(--color2-light); width: 140px;margin-right: -10px;border-radius: 10px;}
+                }
+            }
+        }
+        .ControlSpace{
+            height: 80%;
+            @extend %center-element;
+            color: var(--color4-light);
+            .ControlZone{
+                @include form($w:50%,$h:auto);
+                @extend %center-element;
+               flex-direction: column;
+                p{
+                    text-align: center;
+                }
+                div{
+                    @extend %center-element; 
+
+                    h1{
+                        font-size: 70px;
+                        margin: 16px 50px;
+                        color: var(--color3-light);
+                        font-family: $digit_font;
+                        width: 100px;
+                        text-align: center;
+                    }
+                    span{
+                        width: 30px;height: 30px;
+                        font-size: 25px;
+                        @extend %center-element;
+                        border-radius: 10px;
+                        cursor: pointer;
+                        user-select: none;
+                        &:hover{border: 2px solid var(--color3-light); border-radius: 10px;background-color: var(--color3-light);color: var(--color1-light)}
+                    } 
+                }
+                .progresse{
+                    width: 240px;height: 50px;
+                    border: 3px solid var(--color4-light);
+                    border-radius: 15px;
+                    padding: 3px;
+                    display: block;
+                    span{
+                        width: 60%;
+                        height: 100%;
+                        background: var(--color3-light);
+                    }
+                    position: relative;
+                    
+                    .names{
+                        width: 100%;
+                    
+                        position: absolute;
+                        @extend %center-element;
+                        top: 25%;
+                        p{
+                            width: 47%;
+                            text-align: left;
+                            color: var(--color1-light);
+                            &:nth-of-type(2){
+                                text-align: right;
+                                margin-right: 5px;
+                                color: var(--color3-light);
+                            }
+                        }
+                    }
+                }
+                
+            }
+        }
+
+
+    }
+
+
+
+
+    .TimerInterface{
+        user-select: none;
+        div{
+            width: 70%;
+            margin: 5px 0px;
+            @extend %center-element;
+        }
+        .Breaks{
+            height: 15%;
+            div{
+                @include form($w:40px,$h:40px);
+                background-color: var(--color3-light);
+                border-radius: 50%;
+                margin: 0px 10px;
+                display: block;
+                transition: border-radius width height margin cubic-bezier(0.25, 0.46, 0.45, 1.94) .3s;
+            }
+            .off{
+               
+                width: 0px;height: 0px;
+            margin: 0px;
+            border-radius: 100%;
+            margin-bottom: -100px;
+            opacity: 0;
+            }
+        }
+        .Timer{
+            height: 45%;
+            h1{
+                font-size: 150px;
+                font-weight: 900;
+                color: var(--color3-light);
+                text-align: center;
+                font-family: $digit_font;
+                &:nth-of-type(1),&:nth-of-type(3){
+                    width: 250px;
+                    
+                }
+                &:nth-of-type(2){
+                    width: 50px;
+                }
+            }
+        }
+        .blink{
+            opacity: 0;
+            h1{font-size: 130px;transition: .1s ease-in-out;
+            }
+        }
+        .StartTimer{
+            height: 15%;
+            margin-bottom: 20px;
+            div{
+                @include form($w:120px,$h:55px);
+                border: 3px solid var(--color3-light);
+                margin: 0px 10px;
+                border-radius: 50px;
+                @extend %center-element;
+                color: var(--color3-light);
+                cursor: pointer;
+                &:hover{width: 130px;margin-top: -15px;background: #3c3d3f11;font-weight: 600;}
+                &:nth-of-type(2){
+                    background-color: var(--color3-light);
+                    color: var(--color2-light);
+                    &:hover{opacity: .95;}
+                }
+            }
+        }
+        p{
+            color: var(--color3-light);font-size: 12px;
+        
+        }
+    }
+}
+.on{
+    .darkMode{
+        position: absolute;
+        top: 3%;
+        right: 3%;
+        transition: cubic-bezier(0.175, 0.885, 0.32, 1.275) .3s position;
+    }
+    .ControlInterface{
+    
+        height: 0%;overflow: hidden;
+    }
+    section:nth-of-type(2){
+        height: 100%;
+    }
+    .TimerInterface{
+        transition: cubic-bezier(0.075, 0.82, 0.165, 1) .3s;
+        h5{
+            position: absolute;
+            font-size: 30px;
+            font-weight: 900;letter-spacing: px;
+            opacity: .2;
+            top: 8%;
+            color: var(--color3-light);
+            font-family: $font;
+            filter: blur(.4px);
+        }
+        .Timer{
+            flex-direction: column;
+            h1:nth-of-type(2){
+                width: 0%;
+                height: 0%;
+                opacity: 0;margin: 0px;
+            }
+        
+
+            h1{
+                margin: -20px 0px;
+                font-size: 200px;
+                transition: cubic-bezier(0.175, 0.885, 0.32, 1) .5s;
+            }
+        }
+    }
+}
+
+.UserManualBkg{
+    span{
+        position: absolute;
+        top: 3%;right:3%;
+        cursor: pointer;
+        font-size: 18px;
+        @extend %center-element;
+        color: var(--color3-light);
+        i{font-size: 14px; margin: 0px 5px;}
+    }
+    width: 100%;
+    height: 100vh;
+    @extend %center-element;
+    position: absolute;
+    top: 0;
+    background: var(--color2-light);
+    backdrop-filter: blur(10px);
+    .UserManual{
+        width: 70%;
+        height: 70%;
+        @extend %center-element;
+        
+        flex-direction: column;
+        h2{
+            margin-bottom: 50px;
+        }
+        p{
+            margin: 10px 0px;
+        }
+    }
+    
+}
+
+.Line{
+    position: absolute;
+    height: 13px;
+    background: var(--color3-light);
+    bottom: 0%;
+    left: 0%;
+    transition: cubic-bezier(.51,.92,.24,1) .1s;
+    border-radius:0px 2px 2px 0px ;
+}
+.off{
+    height: 0px;
+    opacity: 0;
+}

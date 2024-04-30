@@ -1,0 +1,247 @@
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+
+}
+body{
+    border: none;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    background-image: url('./bg.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+.container{
+    width: 500px;
+    height: 500px;
+    border-radius: 15px;
+    background: linear-gradient(135deg,rgba(149, 5, 211, 0.284),rgba(243, 180, 170, 0.481));
+    backdrop-filter: blur(15px);
+    box-shadow: 0px 5px 30px 16px rgba(28, 1, 39, 0.202);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    padding: 10px;
+}
+.container div{
+    margin: 5px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.161);
+    box-shadow: 0px 5px 20px 10px rgba(28, 1, 39, 0.113);
+    cursor: pointer;
+    transition: ease-in-out all .11s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 90px;
+    color: rgba(255, 255, 255, 0.319);  
+}
+
+.container p{
+    animation: hovee 1 cubic-bezier(0.175, 0.885, 0.32, 1.5).1s; 
+    font-family: 'Varela Round', sans-serif;
+    font-weight: 500;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+.container div:hover,button:hover{
+    background: rgba(246, 226, 218, 0.339);
+    backdrop-filter: blur(1px);
+}
+
+h1{
+    color: rgba(255, 255, 255, 0.775);
+}
+p{
+    color: rgba(255, 255, 255, 0.65);
+    margin-bottom: 5px;
+    
+}
+p:nth-of-type(2){
+    margin-top: 10px;
+    font-size: 13px;
+}
+.container i{
+    font-size: 100px;
+    color: rgb(255, 255, 255);
+    text-shadow: rgb(111, 48, 219) 1px 0 12px;
+}
+.container .o{
+    color: rgba(255, 255, 255, 0.945);
+    text-shadow: rgb(151, 10, 203) 1px 0 15px;
+
+}
+span{
+    text-align: right;
+    float: right;
+}
+button{
+    position: absolute;
+    bottom: 5%;
+    width: 20%;
+    height: 60px;
+    left: 40%;
+    background: rgba(255, 255, 255, 0.329);
+    font-size: 20px;
+    border: none;
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0px 5px 20px 10px rgba(28, 1, 39, 0.113);
+    cursor: pointer;
+}
+button:hover{
+    bottom: 5.6%;
+    width: 20.5%;
+    padding: 10px;
+    left: 39.75%;
+    color: white;
+    box-shadow: 0px 5px 30px 16px rgba(46, 4, 62, 0.172);
+}
+.win{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    left: 0;
+    background: linear-gradient(white ,rgba(255, 255, 255,0)90%);
+    backdrop-filter: blur(4px,1px);
+    color: black;
+
+}
+.win h1{
+    margin-top: 100px;
+    font-size: 100px;
+}
+
+
+
+.winLine{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.winLine div {
+    height: 5px;
+    background: rgba(255, 255, 255, 0.707);
+    animation: reveal 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1 forwards; /* Added forwards to keep final state */
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px 6px rgba(153, 0, 255, 0.397);
+}
+
+
+
+@keyframes reveal {
+    0% {
+        width: 0px;
+        opacity: 0;
+    }
+    100% {
+        width: var(--final-width); /* Use a custom property to define the final width */
+        opacity: 1;
+    }
+}
+@keyframes hovee {
+    0% {
+        font-size: 0px;
+    }
+    100% {
+        font-size: 100px;
+    }
+}
+.switch{
+    color: rgba(255, 255, 255, 0.698);
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+
+}
+.switch:hover{
+    text-shadow: rgb(136, 15, 222) 1px 0 10px;
+    letter-spacing: 2px;
+    color: white;
+}
+.switch:hover >i{
+    transform: scaleX(-1);
+}
+.aper{
+    opacity: 0;
+    margin-left: -100px;
+    transition: 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.b{
+    animation: showUp ease-in-out 1 .5s;
+}
+
+@keyframes showUp {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.result{
+    position: fixed;
+    top: 0;
+    width: 40%;
+    height: 100px;
+    background-color: red;
+    left: 30%;
+    margin-top: 0px;
+}
+.window {
+    position: fixed;
+    top: 10%;
+    width: 40%;
+    height: 100px;
+    left: 50%;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: windowUp .7s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    font-size: 40px;
+    color: rgba(255, 255, 255, 0.849);
+    text-shadow: 1px 0px 10px rgb(138, 172, 25);
+    font-weight: 500;
+}
+
+@keyframes windowUp {
+    0% {
+        width: 10%;
+        margin-top: 300px;
+        opacity: 0;
+        font-size: 0px;
+        letter-spacing: -10px;
+    }
+    100% {
+        margin-bottom: 100px;
+        opacity: 1;
+        font-size: 40px;
+        letter-spacing: 3px;
+
+    }
+}
